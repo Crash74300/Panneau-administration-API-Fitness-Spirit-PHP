@@ -1,0 +1,91 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+@media only screen and (max-width: 560px) {
+body{
+    background-image: url("../images/backgroundsmall.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    width:auto;
+}
+}
+@media only screen and (min-width: 560px) {
+body{
+    background-image: url("../images/background2.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    width:auto;
+}
+}
+
+
+h1{
+    color:white;
+}
+.c_img {
+  margin: 5px;
+  width: 100px;
+}
+
+.admin {
+  margin: 20px;
+  padding: 20px;
+}
+
+@media only screen and (max-width: 705px) {
+  .txt {
+    font-size: 1em;
+  }
+}
+
+.image {
+  background-image: url("../images/images.jpg");
+  height: 100px;
+  width: 160px;
+  margin-bottom: 20px;
+}
+
+.left {
+  padding: 5px;
+}
+
+.card {
+  display: block;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.profil {
+  display: block;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.ligne {
+  margin: 20px;
+
+}
+
+.search {
+  padding: 10px;
+}
+
+.cadre_search {
+  padding: 10px;
+}
+
+.alert {
+  color: red;
+}
+.name{
+    color: rgba(255, 255, 255, 1);
+}
+.id{
+    color: rgba(255, 255, 255, 1);
+}
+
+
