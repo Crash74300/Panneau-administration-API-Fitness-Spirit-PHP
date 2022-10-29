@@ -44,16 +44,16 @@ $statement = $db->query("SELECT* FROM salles WHERE salles_prop =" . $profil["cli
   <div class="container">
     <div class="row">
       <div class="col-lg-6">
-        <h2>Bienvenue sur votre espace client <?= $profil["client_name"] ?></h2>
+        <h1 class="text-light">Bienvenue sur votre espace client <?= $profil["client_name"] ?></h1>
         <br>
-        <h4>Adresse email: <?= $profil["client_email"] ?></h4>
+        <h4 class="text-light">Adresse email: <?= $profil["client_email"] ?></h4>
       </div>
       <div class="col-12 mt-3">
         <div class="row">
-          <p>Description de votre profil: <?= $profil["client_description"] ?></p>
+          <p class="text-light">Description de votre profil: <?= $profil["client_description"] ?></p>
         </div>
-        <h4>Votre téléphone: <?= $profil["client_tel"] ?></h4>
-        <h4>La permission de votre profil: <?= $perm ?></h4>
+        <h4 class="text-light">Votre téléphone: <?= $profil["client_tel"] ?></h4>
+        <h4 class="text-light">La permission de votre profil: <?= $perm ?></h4>
 
 
 
@@ -61,12 +61,12 @@ $statement = $db->query("SELECT* FROM salles WHERE salles_prop =" . $profil["cli
         if ($active == 1) {
           echo '<div class="form-check form-switch">';
           echo '<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDisabled" disabled>';
-          echo '<label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Votre compte est désactivé!</label>';
+          echo '<label class="form-check-label text-light" for="flexSwitchCheckCheckedDisabled">Votre compte est désactivé!</label>';
           echo '</div>';
         } else {
           echo '<div class="form-check form-switch">';
           echo '<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled" checked disabled>';
-          echo '<label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Votre compte est activé!</label>';
+          echo '<label class="form-check-label text-light" for="flexSwitchCheckCheckedDisabled">Votre compte est activé!</label>';
           echo '</div>';
         };
         echo '<div class="row ligne ">';

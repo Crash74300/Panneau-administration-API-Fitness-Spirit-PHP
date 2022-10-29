@@ -56,11 +56,11 @@ if ($salles['salles_active'] == 0) {
   <div class="container">
     <div class="row">
       <div class="col-lg-6 col-10">
-        <h2><?= $salles["salles_name"] ?></h2>
+        <h1><?= $salles["salles_name"] ?></h1>
         <br>
-        <h4>Adresse email: <?= $salles["salles_email"] ?></h4>
+        <h4 class="text-light">Adresse email: <?= $salles["salles_email"] ?></h4>
         <br>
-        <h4>Adresse postale: <?= $salles["salles_adresse"] ?></h4>
+        <h4 class="text-light">Adresse postale: <?= $salles["salles_adresse"] ?></h4>
         <br>
         <?php if ($confirm == 0) { ?>
           <a class="btn btn-primary" href="confirm.php?id=<?php echo $salles["salles_id"] ?>">Confirmer la création de la salles?</a>
@@ -71,14 +71,14 @@ if ($salles['salles_active'] == 0) {
       </div>
       <div class="col-lg-6 col-10">
         <div class="row">
-          <p>Description: <?= $salles["salles_description"] ?></p>
+          <p class="text-light">Description: <?= $salles["salles_description"] ?></p>
         </div>
-        <h4>Téléphone: <?= $salles["salles_tel"] ?></h4>
-        <h4>Cette salle est <?= $compte ?></h4>
+        <h4 class="text-light">Téléphone: <?= $salles["salles_tel"] ?></h4>
+        <h4 class="text-light">Cette salle est <?= $compte ?></h4>
         <br>
         <br>
         <div class="container border">
-          <h1>Vos services</h1>
+          <h1 class="text-light">Vos services</h1>
           <?php
           if ($confirm == 1) {
           if ($salles['salles_active'] == 0) {
@@ -86,7 +86,7 @@ if ($salles['salles_active'] == 0) {
             <div class="container">
               <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled" checked disabled>
-                <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Gestion de planning</label>
+                <label class="form-check-label text-light" for="flexSwitchCheckCheckedDisabled">Gestion de planning</label>
               </div>
               <a class="btn btn-primary" href="/admin/salles.php?name=">Gérer le planning de la salle</a>
             </div>
@@ -94,7 +94,7 @@ if ($salles['salles_active'] == 0) {
           } else { ?>
             <div class="form-check form-switch">
               <input class="form-check-input" type="checkbox" role="switch" disabled>
-              <label class="form-check-label">Gestion de planning</label>
+              <label class="form-check-label text-light">Gestion de planning</label>
             </div>
           <?php
           };
@@ -105,13 +105,13 @@ if ($salles['salles_active'] == 0) {
                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled" checked disabled>
                 <label class="form-check-label" for="flexSwitchCheckDisabled">Commande de matèriel</label>
               </div>
-              <a class="btn btn-primary" href="/admin/salles.php?name=">Commander du matériel</a>
+              <a class="btn btn-primary text-light" href="/admin/salles.php?name=">Commander du matériel</a>
             </div>
           <?php
           } else { ?>
             <div class="form-check form-switch">
               <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckCheckedDisabled" disabled>
-              <label class="form-check-label" for="flexSwitchCheckDisabled">Commande de matèriel</label>
+              <label class="form-check-label text-light" for="flexSwitchCheckDisabled">Commande de matèriel</label>
             </div>
           <?php
           };
@@ -119,22 +119,22 @@ if ($salles['salles_active'] == 0) {
             <div class="container">
               <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDisabled" checked disabled>
-                <label class="form-check-label" for="flexSwitchCheckDisabled">Commande de boissons</label>
+                <label class="form-check-label text-light" for="flexSwitchCheckDisabled">Commande de boissons</label>
               </div>
-              <a class="btn btn-primary" href="/admin/salles.php?name=">Commander des boissons</a>
+              <a class="btn btn-primary text-light" href="/admin/salles.php?name=">Commander des boissons</a>
             </div>
           <?php
           } else { ?>
             <div class="form-check form-switch">
               <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDisabled" disabled>
-              <label class="form-check-label" for="flexSwitchCheckDisabled">Commande de boissons</label>
+              <label class="form-check-label text-light" for="flexSwitchCheckDisabled">Commande de boissons</label>
             </div>
         </div>
       <?php
           }}else {
-            echo '<h5 class="">Cette salle doit être activé pour accéder aux fonctionnalités!</h5>';
+            echo '<h5 class="text-light">Cette salle doit être activé pour accéder aux fonctionnalités!</h5>';
           }}else {
-            echo '<h5 class="">Vous devez confirmer la création de la salle pour débloquer les fonctionnalités!</h5>';
+            echo '<h5 class="text-light">Vous devez confirmer la création de la salle pour débloquer les fonctionnalités!</h5>';
           }
       ?>
 
