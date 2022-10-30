@@ -1,10 +1,19 @@
 <!DOCTYPE html>
+
+<head>
+  <title>Ajouter un utilisateur</title>
+  <meta name="description" content="Ajout d'utilisateur">
+</head>
+
 <?php
-
+//////////////////////////Elements qui se répète////////////////////////////////////
 require_once '../elements/header.php';
-require_once '../functions/auth.php';
 
+///////////////////////////Forcer l'utilisateur à être connecté/////////////////////
+require_once '../functions/auth.php';
 forcer_utilisateur_connecte();
+
+///////////////////////////Vérifie que l'utilisateur est bien administrateur////////////////////////////////
 if ($_SESSION['perm'] == 0) {
   session_start();
   unset($_SESSION['connecte']);
@@ -15,8 +24,9 @@ if ($_SESSION['perm'] == 0) {
   exit();
 };
 
-if (!empty($_POST)) {
+///////////////////////////////////////////Récupère les information du formulaire pour créer l'utilisateur dans la base de donnée////////////////////////////////////
 
+if (!empty($_POST)) {
   if (
     isset($_POST["client_name"], $_POST["client_email"],  $_POST["client_description"])
     && !empty($_POST["client_name"]) && !empty($_POST["client_email"]) && !empty($_POST["client_description"])
@@ -43,7 +53,9 @@ if (!empty($_POST)) {
     $row = $check->rowCount();
     if ($row == 0) {
       $sql = 'INSERT INTO utilisateurs(client_name, client_email, client_tel, client_description, client_perm, client_active, password_token, password_asked_date) VALUES (:client_name, :client_email, :client_tel, :client_description, :client_perm, :client_active, :password_token, :password_asked_date)';
-      /*TOKEN*/
+      
+      
+///////////////////////////Création du TOKEN//////////////////////
       $string = implode('', array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9')));
       $token = substr(str_shuffle($string), 0, 20);
 
@@ -60,12 +72,12 @@ if (!empty($_POST)) {
 
 
 
-      /****************EMAIL*******************/
+///////////////////////////Envoie de l'EMAIL////////////////////////////////////////////
 
-      /****************EMAIL*******************/
+//////////////Création du lien avec le token pour modifier le mot de passe////////////////////////////////
       $link = 'http://fitnessspirit.online/session/pass.php?token=' . $token;
-      // Plusieurs destinataires
-      $to = $email; // notez la virgule
+    //destinataire
+      $to = $email; 
 
       // Sujet
       $subject = 'Création de votre mot de passe';
@@ -107,6 +119,9 @@ if (!empty($_POST)) {
 
 ?>
 
+
+<!--------------------------------Structure HTML------------------------------------->
+
 <html>
 
 <body>
@@ -140,6 +155,10 @@ if (!empty($_POST)) {
       <label for="tel" class="form-label text-light">Téléphone</label>
       <input type="tel" name="client_tel" class="form-control client_tel" placeholder="0622*****9">
       <br>
+      <div class="mb-3">
+      <label class="form-label text-light">Description</label>
+      <textarea class="form-control client_description" name="client_description" rows="3"></textarea>
+    </div>
       <input class="ont" type="checkbox" checked data-toggle="toggle" data-on="Actif" data-off="Inactif" data-onstyle="success" data-offstyle="danger">
     </div>
     <h4 class="text-light">Permission d'administration</h4>
@@ -151,7 +170,8 @@ if (!empty($_POST)) {
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Créer le partenaire</button>
 
 
-    <!-- Modal -->
+<!------------------------- Modal ----------------------------->
+
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -172,6 +192,9 @@ if (!empty($_POST)) {
       </div>
     </div>
   </form>
+ 
+<!----------------------------Appel des modules javascript------------------------------------------>
+
   <script type="text/javascript" src="../scripts/script.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>

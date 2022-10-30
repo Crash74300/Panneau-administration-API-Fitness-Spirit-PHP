@@ -42,19 +42,7 @@ if (isset($_POST['send'])) {
     $erreur = "Tout les champs ne sont pas remplit";
   }
 };
-/*
-  if ($user->rowCount() > 0) {
-    $password = password_verify($_POST['client_password'], $mdp);
-    if ($_POST['client_email'] === $pseudo && $password) {
-      session_start();
-      $_SESSION['connecte'] = 1;
-      $_SESSION['client_id'] = $user->fetch()['id'];
-      header('Location: ../admin/admin.php');
-    } else {
-      $erreur = "Identifiants incorrects";
-    }
-  };
-};*/
+
 
 if ($erreur) : ?>
   <div class="alert alert-danger">
@@ -65,23 +53,23 @@ if ($erreur) : ?>
 
 <body>
   <!--Background-->
-  <section class="vh-100 bg-light ">
+  <section class="vh-100  ">
 
     <div class="container py-5 h-100">
       <div class="row d-flex align-items-center justify-content-center h-100 w-100">
         <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-          <h1 class="text-center text-secondary">Fitness spirit</h1>
+          <h1 class="text-center text-light">Fitness spirit</h1>
           <form action="" method="post">
             <!-- Email input -->
             <div class="form-outline mb-4">
               <input type="text" class="form-control form-control-lg" name="client_email" />
-              <label class="form-label">Adresse email</label>
+              <label class="form-label text-light">Adresse email</label>
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-4">
               <input type="password" class="form-control form-control-lg" name="client_password" />
-              <label class="form-label">Mot de passe</label>
+              <label class="form-label text-light">Mot de passe</label>
             </div>
 
             <div class="d-flex justify-content-around align-items-center mb-3">

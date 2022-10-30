@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <?php
 
+/////////////////////////////////////////Element qui se répète///////////////////////////////////////////////////////////
 require_once '../elements/header.php';
+
+
+//////////////////////////////////////////Force l'utilisateur à être connecté///////////////////////////////////////////
 require_once '../functions/auth.php';
-require '../database/database.php';
 forcer_utilisateur_connecte();
+
+
+/////////////////////////////////Vérifie que l'utilisateur est administrateur///////////////////////////////
+
 if ($_SESSION['perm'] == 0) {
   session_start();
   unset($_SESSION['connecte']);
@@ -14,7 +21,12 @@ if ($_SESSION['perm'] == 0) {
   header('Location: ../session/login.php');
   exit();
 };
+
+///////////////////////////////////Connexion de la base de donnée/////////////////////////////////////////
+require '../database/database.php';
 $db = Database::connect();
+
+////////////////////////////////////Récupère les information du formulaire pour créer la salle dans la base de donnée/////////////////////////////
 if (!empty($_POST)) {
 
   if (
@@ -30,6 +42,7 @@ if (!empty($_POST)) {
     $request = $db->prepare($sql);
     $request = $db->query($sql);
     $profil = $request->fetch();
+////////////////////////////////Ajoute l'id du propriétaire dans la classe prop de la salle///////////////////////////////////////////////// 
     $prop = $profil["client_id"];
     $email = $profil["client_email"];
     if (!empty($_POST["salles_planning"])) {
@@ -52,8 +65,7 @@ if (!empty($_POST)) {
     } else {
       $active = 0;
     };
-    require_once '../database/database.php';
-    $db = Database::connect();
+
     $check = $db->prepare('SELECT salles_name FROM salles WHERE salles_name = ?');
     $check->execute(array($nom));
     $data = $check->fetch();
@@ -75,11 +87,11 @@ if (!empty($_POST)) {
 
 
 
-      /****************EMAIL*******************/
-      /****************EMAIL*******************/
+      //////////////////////EMAIL d'information///////////////////////////
+ 
 
       // Destinataires
-      $to = $email; // notez la virgule
+      $to = $email; 
 
       // Sujet
       $subject = 'Création d\'une salle dans votre espace client';
@@ -120,6 +132,8 @@ if (!empty($_POST)) {
   };
 };
 ?>
+
+<!------------------------------------Structure HTML----------------------->
 <html>
 
 <body>
@@ -175,7 +189,7 @@ if (!empty($_POST)) {
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Créer la salle</button>
 
 
-    <!-- Modal -->
+<!------------------ Modal ------------------->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">

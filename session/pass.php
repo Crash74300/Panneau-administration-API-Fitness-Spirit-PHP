@@ -21,7 +21,7 @@ if (empty($row)) {  // Si aucune info associée au token n'est trouvé
   exit;
 }
 
-// On calcul la date de la génération du token + 3hrs
+// On calcul la date de la génération du token + 1 day
 $tokenDate = strtotime('+1 day', strtotime($row['password_asked_date']));
 $todayDate = Date("Y-m-d");
 

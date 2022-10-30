@@ -5,6 +5,7 @@ require '../database/database.php';
 require_once '../functions/auth.php';
 
 forcer_utilisateur_connecte();
+$id = $_SESSION['id'];
 $db = Database::connect();
 $sql = "SELECT * FROM salles WHERE salles_id =" . $_GET["id"];
 $request = $db->prepare($sql);
@@ -14,7 +15,13 @@ $planning = $salles['salles_planning'];
 $materiels = $salles['salles_materiels'];
 $boissons = $salles['salles_boissons'];
 $confirm = $salles['salles_confirm'];
+$prop = $salles['salles_prop'];
 $compte = '';
+if ($id != $prop){
+    echo '<script language="JavaScript" type="text/javascript">alert("Vous n\'ête pas autorisé à faire ça!");</script>';
+    header('Location: ../session/login.php');
+    exit();
+}
 
 if ($salles['salles_active'] == 0) {
   $compte = 'Activé';

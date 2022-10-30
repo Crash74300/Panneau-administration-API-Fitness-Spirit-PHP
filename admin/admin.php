@@ -102,7 +102,7 @@ if ($_SESSION['perm'] == 0) {
     <a class="btn btn-primary" href="/admin/profil.php?id=<?php echo $user["client_id"] ?>">Voir</a>
 <?php
     if ($user['client_password'] == '') {
-      echo '<h2>En attente de mot de passe</h2>';
+      echo '<h2 class="text-light">En attente de mot de passe</h2>';
     };
    // echo '</div>';
     echo '</div>';
