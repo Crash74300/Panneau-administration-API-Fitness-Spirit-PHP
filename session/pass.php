@@ -25,7 +25,7 @@ if (empty($row)) {  // Si aucune info associée au token n'est trouvé
 $tokenDate = strtotime('+1 day', strtotime($row['password_asked_date']));
 $todayDate = Date("Y-m-d");
 
-if ($tokenDate < $todayDate) {  // Si la date est dépassé le délais de 3hrs
+if ($tokenDate > $todayDate) {  // Si la date est dépassé le délais de 3hrs
   echo 'Token expiré !';
   exit;
 }
